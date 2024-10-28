@@ -1,4 +1,3 @@
-// eslint-disable-next-line react-refresh/only-export-components
 import { useState } from "react";
 import MyButton from "./assets/components/MyButton";
 import Count from "./assets/components/Count";
