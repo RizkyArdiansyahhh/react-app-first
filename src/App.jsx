@@ -1,34 +1,32 @@
+// eslint-disable-next-line react-refresh/only-export-components
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import MyButton from "./assets/components/MyButton";
+import Count from "./assets/components/Count";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [number, setNumber] = useState(0);
+
+  function add() {
+    setNumber(number + 1);
+  }
+  function min() {
+    setNumber(number - 1);
+  }
+  function reset() {
+    setNumber(0);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React gacorr</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <MyButton content="-" even={min} disabled={number < 0 || number > 10} />
+      <Count number={number < 0 || number > 10 ? "done!" : number} />
+      <MyButton content="+" even={add} disabled={number < 0 || number > 10} />
+      <MyButton
+        content="Reset"
+        even={reset}
+        disabled={number < 0 || number > 10 ? false : true}
+      />
+    </div>
   );
 }
 
